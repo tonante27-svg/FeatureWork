@@ -1,0 +1,171 @@
+{
+  "versionDetail": {
+    "architecture": "darwin-arm64",
+    "cliVersion": "@salesforce/cli/2.42.6",
+    "nodeVersion": "node-v20.12.2",
+    "osVersion": "Darwin 25.3.0",
+    "rootPath": "/usr/local/lib/sf",
+    "shell": "zsh",
+    "pluginVersions": [
+      "@oclif/plugin-autocomplete 3.0.18 (core)",
+      "@oclif/plugin-commands 3.3.4 (core)",
+      "@oclif/plugin-help 6.0.22 (core)",
+      "@oclif/plugin-not-found 3.1.9 (core)",
+      "@oclif/plugin-plugins 5.0.21 (core)",
+      "@oclif/plugin-search 1.0.24 (core)",
+      "@oclif/plugin-update 4.2.12 (core)",
+      "@oclif/plugin-version 2.1.2 (core)",
+      "@oclif/plugin-warn-if-update-available 3.0.19 (core)",
+      "@oclif/plugin-which 3.1.10 (core)",
+      "@salesforce/cli 2.42.6 (core)",
+      "apex 3.1.11 (core)",
+      "auth 3.6.11 (core)",
+      "data 3.3.5 (core)",
+      "deploy-retrieve 3.6.14 (core)",
+      "info 3.2.8 (core)",
+      "limits 3.3.7 (core)",
+      "marketplace 1.2.5 (core)",
+      "org 4.1.10 (core)",
+      "packaging 2.4.4 (core)",
+      "schema 3.3.6 (core)",
+      "settings 2.2.6 (core)",
+      "signups 2.6.56 (user)",
+      "sobject 1.4.2 (core)",
+      "source 3.3.12 (core)",
+      "telemetry 3.3.7 (core)",
+      "templates 56.2.7 (core)",
+      "trust 3.6.11 (core)",
+      "user 3.5.8 (core)"
+    ]
+  },
+  "sfdxEnvVars": [],
+  "sfEnvVars": [
+    [
+      "SF_BINPATH",
+      "/usr/local/lib/sf/bin/sf"
+    ],
+    [
+      "SF_AUTOUPDATE_DISABLE",
+      "true"
+    ],
+    [
+      "SF_DISABLE_AUTOUPDATE",
+      "true"
+    ],
+    [
+      "SF_UPDATE_INSTRUCTIONS",
+      "Use \"npm update --global @salesforce/cli\" to update npm-based installations."
+    ]
+  ],
+  "cliConfig": {
+    "arch": "arm64",
+    "bin": "sf",
+    "binAliases": [
+      "sfdx"
+    ],
+    "binPath": "/usr/local/lib/sf/bin/sf",
+    "cacheDir": "/Users/tonantehome/Library/Caches/sf",
+    "channel": "stable",
+    "configDir": "/Users/tonantehome/.config/sf",
+    "dataDir": "/Users/tonantehome/.local/share/sf",
+    "debug": 0,
+    "dirname": "sf",
+    "errlog": "/Users/tonantehome/Library/Caches/sf/error.log",
+    "flexibleTaxonomy": true,
+    "home": "/Users/tonantehome",
+    "isSingleCommandCLI": false,
+    "name": "@salesforce/cli",
+    "nsisCustomization": "scripts/nsis.nsi",
+    "platform": "darwin",
+    "root": "/usr/local/lib/sf",
+    "shell": "zsh",
+    "theme": {
+      "bin": "blueBright",
+      "command": "blueBright",
+      "dollarSign": "green",
+      "flag": "green",
+      "flagDefaultValue": "blueBright",
+      "flagOptions": "blueBright",
+      "flagRequired": "red",
+      "sectionHeader": "blue",
+      "topic": "blueBright"
+    },
+    "topicSeparator": " ",
+    "userAgent": "@salesforce/cli/2.42.6 darwin-arm64 node-v20.12.2",
+    "valid": true,
+    "version": "2.42.6",
+    "warned": false,
+    "windows": false,
+    "_base": "@oclif/core@3.26.6",
+    "_commands": {},
+    "_topics": {},
+    "commandPermutations": {
+      "validPermutations": {}
+    },
+    "pluginLoader": {
+      "options": {
+        "root": "/usr/local/lib/sf/dist"
+      },
+      "errors": [],
+      "plugins": {},
+      "pluginsProvided": false
+    },
+    "topicPermutations": {
+      "validPermutations": {}
+    },
+    "nodeEngine": ">=18.6.0"
+  },
+  "pluginSpecificData": {
+    "@salesforce/plugin-deploy-retrieve": [
+      {
+        "sourceApiVersion": "59.0",
+        "targetDevHubApiVersion": "66.0",
+        "targetOrgApiVersion": "66.0"
+      }
+    ],
+    "@salesforce/plugin-auth": [
+      {
+        "isUsingGenericKeychain": false,
+        "sfCryptoV2Support": true,
+        "cryptoVersion": "unknown"
+      }
+    ]
+  },
+  "diagnosticResults": [
+    {
+      "testName": "salesforcedx plugin not installed",
+      "status": "pass"
+    },
+    {
+      "testName": "no linked plugins",
+      "status": "pass"
+    },
+    {
+      "testName": "[@salesforce/plugin-deploy-retrieve] sourceApiVersion matches apiVersion",
+      "status": "pass"
+    },
+    {
+      "testName": "[@salesforce/plugin-deploy-retrieve] default target DevHub max apiVersion matches default target org max apiVersion",
+      "status": "pass"
+    },
+    {
+      "testName": "[@salesforce/plugin-deploy-retrieve] sourceApiVersion matches default target org max apiVersion",
+      "status": "warn"
+    },
+    {
+      "testName": "using latest or latest-rc CLI version",
+      "status": "pass"
+    },
+    {
+      "testName": "[@salesforce/plugin-auth] CLI supports v2 crypto",
+      "status": "pass"
+    }
+  ],
+  "suggestions": [
+    "Check https://github.com/forcedotcom/cli/issues for CLI issues posted by the community.",
+    "Check http://status.salesforce.com for general Salesforce availability and performance.",
+    "The sourceApiVersion in sfdx-project.json doesn't match the max apiVersion of the default target org. As a result, you're not using the latest features available in API version 66.0. The version mismatch isn't a problem, as long as it's the behavior you actually want."
+  ],
+  "logFilePaths": [],
+  "commandExitCode": 0
+}

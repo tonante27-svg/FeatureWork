@@ -1,0 +1,86 @@
+<apex:page standardController="Contact" renderAs="pdf" applyHtmlTag="false" showHeader="false" cache="true">
+    <html>
+        <head>
+            <meta charset="UTF-8"/>
+            <style>
+                /* Basic PDF styling */
+                @page { size: A4; margin: 18mm; }
+                body { font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #16325c; }
+                .header { text-align: center; margin-bottom: 20px; }
+                .title { font-size: 22px; font-weight: 700; margin: 0; color: #000; }
+                .subtitle { font-size: 13px; color: #5e6a71; margin-top: 4px; display: block; }
+                
+                /* New PDF Section Styles */
+                .section-container { margin-bottom: 20px; border: 1px solid #d8dde6; border-radius: 4px; }
+                .section-header { background-color: #f3f2f2; padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #d8dde6; }
+                .section-body { padding: 12px; }
+                
+                .footer { position: fixed; bottom: 10mm; left: 0; right: 0; text-align: center; font-size: 10px; color: #5e6a71; }
+                .muted { color: #5e6a71; }
+                .spacer { height: 12px; }
+                .section-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; display: block;}
+                .note { font-size: 10px; color: #8e9aa0; margin-top: 10px; font-style: italic; }
+                .hr { border: 0; border-top: 1px solid #d8dde6; margin: 10px 0; }
+                
+                /* Table for 2-column layout in PDF */
+                .data-table { width: 100%; border-collapse: collapse; }
+                .data-label { font-weight: bold; color: #54698d; width: 30%; padding: 4px 0; }
+                .data-value { width: 70%; padding: 4px 0; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <p class="title">Onboarded Account Info</p>
+                <apex:outputText styleClass="subtitle" value="{!IF(NOT(ISBLANK(Contact.Name)), Contact.Name, 'Contact Summary')}"/>
+            </div>
+
+            <div class="section-container">
+                <div class="section-header">Contact Details</div>
+                <div class="section-body">
+                    <table class="data-table">
+                        <tr>
+                            <td class="data-label">Full Name</td><td class="data-value">{!Contact.Name}</td>
+                        </tr>
+                        <tr>
+                            <td class="data-label">Email</td><td class="data-value">{!Contact.Email}</td>
+                        </tr>
+                        <tr>
+                            <td class="data-label">Location</td><td class="data-value">{!Contact.MailingCity}, {!Contact.MailingCountry}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <div class="section-header">Account Details</div>
+                <div class="section-body">
+                    <apex:outputPanel rendered="{!AND(NOT(ISBLANK(Contact.AccountId)), Contact.Account.Onboarding_Status__c == 'Onboarded')}" layout="none">
+                        <table class="data-table">
+                            <tr>
+                                <td class="data-label">Account Name</td><td class="data-value">{!Contact.Account.Name}</td>
+                            </tr>
+                            <tr>
+                                <td class="data-label">Status</td><td class="data-value">{!Contact.Account.Onboarding_Status__c}</td>
+                            </tr>
+                        </table>
+                    </apex:outputPanel>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <div class="section-header">Onboarding Summary</div>
+                <div class="section-body">
+                    <span class="section-title">Current Status</span>
+                    <hr class="hr"/>
+                    <apex:outputText styleClass="muted" value="{!IF(NOT(ISBLANK(Contact.Account.Description)), Contact.Account.Description, 'No automated discount data available.')}"/>
+                    <p class="note">Note: This data is generated via the Account Discount Service and Onboarding Flow.</p>
+                </div>
+            </div>
+
+            <div class="footer">
+                Generated on <apex:outputText value="{0,date,MMMM d, yyyy}"><apex:param value="{!NOW()}"/></apex:outputText>
+                &nbsp;•&nbsp; {!$Organization.Name}
+            </div>
+        </body>
+    </html>
+</apex:page>

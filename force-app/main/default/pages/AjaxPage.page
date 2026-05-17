@@ -1,0 +1,16 @@
+<apex:page controller="AjaxController" showHeader="true" sidebar="true">
+    <apex:form>
+        <apex:outputPanel id="counter">
+            <apex:outputText value="Click Me : {!count}" />
+            <apex:Support event="onclick" action="{!incrementCounter}" rerender="counter" status="counterStatus" />    
+        </apex:outputPanel>
+            <apex:actionStatus id="counterStatus">
+            <apex:facet name="start">
+                <p>Loading...</p>
+            </apex:facet>
+            <apex:facet name="stop">
+                <p>Done.</p>
+            </apex:facet>
+         </apex:actionStatus>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,174 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef1"
+            },
+            "Name": "Edge Communications",
+            "Industry": "Electronics",
+            "BillingCity": "Austin",
+            "BillingState": "TX",
+            "BillingStreet": "312 Constitution Place\nAustin, TX 78767\nUSA",
+            "Phone": "(512) 757-6000"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef2"
+            },
+            "Name": "Burlington Textiles Corp of America",
+            "Industry": "Apparel",
+            "BillingCity": "Burlington",
+            "BillingState": "NC",
+            "BillingPostalCode": "27215",
+            "BillingCountry": "USA",
+            "BillingStreet": "525 S. Lexington Ave",
+            "Phone": "(336) 222-7000"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef3"
+            },
+            "Name": "Pyramid Construction Inc.",
+            "Industry": "Construction",
+            "BillingCity": "Paris",
+            "BillingPostalCode": "75251",
+            "BillingCountry": "France",
+            "BillingStreet": "2 Place Jussieu",
+            "Phone": "(014) 427-4427"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef4"
+            },
+            "Name": "Dickenson plc",
+            "Industry": "Consulting",
+            "BillingCity": "Lawrence",
+            "BillingState": "KS",
+            "BillingPostalCode": "66045",
+            "BillingCountry": "USA",
+            "BillingStreet": "1301 Hoch Drive",
+            "Phone": "(785) 241-6200"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef5"
+            },
+            "Name": "Grand Hotels & Resorts Ltd",
+            "Industry": "Hospitality",
+            "BillingCity": "Chicago",
+            "BillingState": "IL",
+            "BillingStreet": "2334 N. Michigan Avenue, Suite 1500\nChicago, IL 60601, USA",
+            "Phone": "(312) 596-1000"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef6"
+            },
+            "Name": "United Oil & Gas Corp.",
+            "Industry": "Energy",
+            "BillingCity": "New York",
+            "BillingState": "NY",
+            "BillingStreet": "1301 Avenue of the Americas \nNew York, NY 10019\nUSA",
+            "Phone": "(212) 842-5500"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef7"
+            },
+            "Name": "Express Logistics and Transport",
+            "Industry": "Transportation",
+            "BillingCity": "Portland",
+            "BillingState": "OR",
+            "BillingStreet": "620 SW 5th Avenue Suite 400\nPortland, Oregon 97204\nUnited States",
+            "Phone": "(503) 421-7800"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef8"
+            },
+            "Name": "United Oil & Gas, Singapore",
+            "Industry": "Energy",
+            "BillingCity": "Singapore",
+            "BillingState": "Singapore",
+            "BillingStreet": "9 Tagore Lane\nSingapore, Singapore 787472\nSingapore",
+            "Phone": "(650) 450-8810"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef9"
+            },
+            "Name": "University of Arizona",
+            "Industry": "Education",
+            "BillingCity": "Tucson",
+            "BillingState": "AZ",
+            "BillingStreet": "888 N Euclid \nHallis Center, Room 501\nTucson, AZ 85721\nUnited States",
+            "Phone": "(520) 773-9050"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef10"
+            },
+            "Name": "United Oil & Gas, UK",
+            "Industry": "Energy",
+            "BillingState": "UK",
+            "BillingStreet": "Kings Park, 17th Avenue, Team Valley Trading Estate,\nGateshead, Tyne and Wear NE26 3HS\nUnited Kingdom",
+            "Phone": "+44 191 4956203"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef11"
+            },
+            "Name": "GenePoint",
+            "Industry": "Biotechnology",
+            "BillingCity": "Mountain View",
+            "BillingState": "CA",
+            "BillingStreet": "345 Shoreline Park\nMountain View, CA 94043\nUSA",
+            "Phone": "(650) 867-3450"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef12"
+            },
+            "Name": "sForce",
+            "BillingCity": "San Francisco",
+            "BillingState": "CA",
+            "BillingPostalCode": "94087",
+            "BillingCountry": "US",
+            "BillingStreet": "The Landmark @ One Market",
+            "Phone": "(415) 901-7000"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef13"
+            },
+            "Name": "Sample Account for Entitlements"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef14"
+            },
+            "Name": "Starr Merchandise",
+            "Industry": "Apparel",
+            "BillingCity": "Zephyrhills",
+            "BillingState": "FL",
+            "BillingPostalCode": "33542",
+            "BillingCountry": "USA",
+            "BillingStreet": "7839 Gall Blvd",
+            "Phone": "813 4791111"
+        }
+    ]
+}

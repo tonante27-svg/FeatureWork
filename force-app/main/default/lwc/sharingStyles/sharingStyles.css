@@ -1,0 +1,5 @@
+.header{
+    /* SLDS2 uplift: prefer SLDS global token with legacy fallback */
+    background-color: black;
+    color:white;
+}

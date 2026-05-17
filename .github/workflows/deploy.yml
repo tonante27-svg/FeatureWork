@@ -1,0 +1,35 @@
+name: Deploy to Sandbox
+
+on:
+  push:
+    branches:
+      - main  # This triggers the deploy whenever you push to 'main'
+    paths:
+      - 'force-app/**' # Only trigger if files in the force-app folder change
+
+jobs:
+  deploy-code:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checkout the code from GitHub
+      - name: 'Checkout source code'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2. Install Salesforce CLI
+      - name: 'Install Salesforce CLI'
+        run: |
+          npm install -g @salesforce/cli
+
+      # 3. Authenticate using the Secret
+      - name: 'Authenticate to Sandbox'
+        run: |
+          echo "${{ secrets.SFDX_AUTH_URL }}" > ./authfile.txt
+          sf org login sfdx-url --sfdx-url-file ./authfile.txt --set-default --alias sandbox
+          rm ./authfile.txt
+
+      # 4. Deploy the code
+      - name: 'Deploy Metadata'
+        run: |
+          sf project deploy start --source-dir force-app --target-org sandbox --test-level NoTestRun

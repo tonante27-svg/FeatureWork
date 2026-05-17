@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Create Lead" icon-name="standard:account">
+     
+      <lightning-input label="Last Name"  onchange={nameChangedHandler}></lightning-input>
+      <lightning-input label="Company"  onchange={companyChangedHandler}></lightning-input>
+      <lightning-button variant="brand" label="Create Lead" onclick={submitRecord}></lightning-button>
+    </lightning-card>
+    <lightning-card  title="Update Lead">
+      <lightning-input label="Id" value={strLeadId} onchange={idChangeHandler}></lightning-input>
+      <lightning-input label="New name"  onchange={newNameHandler}></lightning-input>
+      <lightning-button variant="brand" label="Update Lead" onclick={submitUpdate}></lightning-button>
+    </lightning-card>
+     <lightning-card  title="Delete Lead">
+       <lightning-input label="Id" value={strLeadId} onchange={idChangeHandler}></lightning-input>
+       <lightning-button variant="brand" label="Delete Lead" onclick={submitDelete}></lightning-button>
+    </lightning-card>
+</template>

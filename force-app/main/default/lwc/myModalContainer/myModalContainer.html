@@ -1,0 +1,22 @@
+<template>
+	<div class="slds-box slds-color__background_gray-1 slds-var-p-around_medium">
+			<h3 class="slds-text-heading_small slds-var-m-bottom_small">
+				My Modal Container</h3>
+			<div class="slds-m-bottom_small">
+				<template lwc:if={selectedColor}>
+					Color selected: <strong>{selectedColor}</strong>
+				</template>
+				<template lwc:else>
+					No color selected yet.
+				</template>
+			</div>
+			<div class="slds-text-align_right">
+				<lightning-button label="Pick a Color" onclick={handleOpenModal} variant="brand">
+				</lightning-button>
+			</div>
+			<div class="slds-text-align_right">
+				<lightning-button label="Remove Selected Color" onclick={handleClearColor} variant="brand">
+				</lightning-button>
+			</div>
+	</div>
+</template>

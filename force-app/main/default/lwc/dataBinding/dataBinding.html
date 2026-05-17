@@ -1,0 +1,45 @@
+<template>
+    <lightning-card title="Data Binding Section 1">
+        <h1>{str}</h1>
+        <h1>{obj.name}</h1>
+        <h2>{obj.age}</h2>
+        <p>Staus of Bool:{bool}</p>
+        <lightning-input label="Enter value" onchange={changeHandler}></lightning-input>
+        <template if:true={conditional}>
+            <h1>Conditional is truthy</h1>
+        </template>
+    </lightning-card>
+
+    <lightning-card title="Players">
+        <template for:each={players} for:item="player" for:index="index">
+            <div key={player.name}>
+                <h1>{index} - {player.name}</h1>
+                <h1>Age: {player.age}</h1>
+                <h1>Height: {player.height}</h1>
+            </div>
+        </template>
+
+        <template iterator:player={players}>
+            <div key={player.value.name}>
+                <h1>{player.index} - {player.value.name}</h1>
+                <h1>Age: {player.value.age}</h1>
+                <h1>Height: {player.value.height}</h1>
+                <template if:true={player.last}>
+                    <p>This is the last one!</p>
+                </template>
+                <template if:true={player.first}>
+                    <p>This is the first one!</p>
+                </template>
+            </div>
+        </template>
+    </lightning-card>
+<c-hello-world target="World"></c-hello-world>
+<c-hello-world target="Bro"></c-hello-world>
+ <lightning-card title="Getters">
+    {firstPlayerName}
+    {addtion}
+ </lightning-card>
+  <lightning-card title="Setters">
+   <c-setter-child item="Parent Name"></c-setter-child>
+ </lightning-card>
+</template>

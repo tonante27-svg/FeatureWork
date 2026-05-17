@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Get Account" icon-name="standard:account">
+        <div class="slds-var-m-around_medium">
+            <c-get-account onshowdetails={handleShowDetails}></c-get-account>
+        </div>
+        <template if:true={name}>
+            <div class="slds-var-m-around_medium">
+                <p><strong>Name:</strong> {name}</p>
+                <p><strong>Industry:</strong> {industry}</p>
+                <p><strong>Rating:</strong> {rating}</p>
+                <p ><strong>Phone:</strong> {phone}</p>
+            </div>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,3 @@
+SELECT Name, BillingAddress
+  FROM Account
+  WHERE Name LIKE '\'Acme%'

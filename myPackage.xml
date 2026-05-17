@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>CountryCalloutQueueable</members>
+        <members>CountryCalloutQueueableTest</members>
+        <members>CountryCalloutUtility</members>
+        <members>CountryCalloutUtilityTest</members>
+        <members>CountryTriggerHandler</members>
+         <members>CountryTriggerHandlerTest</members>
+        <members>CountryWrapper</members>
+        <members>CountryWrapperTest</members>
+        <members>MyPageContoller</members>
+        <members>MyPageContollerTest</members>
+        <members>StandardDiscount</members>
+        <members>EmployeeService</members>
+        <members>GetWelcomeTasks</members>
+        <members>VIPDiscount</members>
+        <members>WeatherData</members>
+        <members>WeatherService</members>
+        <members>AccountGetController</members>
+        <members>AccountListControllers</members>
+        <members>ChartController</members>
+        <members>ChartControllerTest</members>
+        <name>ApexClass</name>
+         
+    </types>
+    <types>
+            <members>CountryTrigger</members>
+            <name>ApexTrigger</name>
+         </types>
+    <version>59.0</version>
+</Package>

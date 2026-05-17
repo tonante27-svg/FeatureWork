@@ -1,0 +1,8 @@
+<aura:component>
+ <add:attribute name="num1" type="Integer" default="30"/>
+<add:attribute name="num2" type="Integer" default="20"/>
+    <add:attribute name="result" type="Integer" default="0"/>
+    <br/><br/>
+    <lightning:button label="Add" onclick="{!c.addNumbers}"/>
+    <lightning:outputText value="{!v.result}"/>
+</aura:component>   

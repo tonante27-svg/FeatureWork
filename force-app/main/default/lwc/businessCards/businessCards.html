@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Business Cards" icon-name="standard:account">
+        <template if:true={accounts.data}>
+            <div class="slds-grid slds-wrap">
+                <template for:each={accounts.data} for:item="account">
+                    <div key={account.Id} class="slds-col slds-size_1-of-3 slds-p-around_small">
+                        <lightning-card title={account.Name} icon-name="standard:account">
+                            <p class="slds-var-p-horizontal_small">Type: {account.Type}</p>
+                            <p class="slds-var-p-horizontal_small">Industry: {account.Industry}</p>
+                            <p class="slds-var-p-horizontal_small">Phone: {account.Phone}</p>
+                        </lightning-card>
+                    </div>
+                </template>
+            </div>
+        </template>
+        <template if:true={accounts.error}>
+            <p class="slds-p-horizontal_small">Error loading accounts: {accounts.error.message}</p>
+        </template>
+        </lightning-card>   
+</template>

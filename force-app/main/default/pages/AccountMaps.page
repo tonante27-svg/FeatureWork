@@ -1,0 +1,17 @@
+<apex:page standardController="Account">
+    <apex:pageBlock>
+        <apex:pageBlockSection title="{!Account.Name} Location">
+            <!-- Display the text version of the address -->
+            <apex:outputPanel>
+                <apex:outputField value="{!Account.BillingStreet}"/>
+                <apex:outputField value="{!Account.BillingCity}"/>
+                <apex:outputField value="{!Account.BillingState}"/>
+                <apex:outputField value="{!Account.BillingPostalCode}"/>
+                <apex:outputField value="{!Account.BillingCountry}"/>
+            </apex:outputPanel>
+            <apex:outputPanel>
+                <p>Map display is currently unavailable. The apex:map component has been deprecated.</p>
+            </apex:outputPanel>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

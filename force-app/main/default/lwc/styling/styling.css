@@ -1,0 +1,4 @@
+.header{
+    /* SLDS2 uplift: prefer SLDS global token with legacy fallback */
+    background-color: var(--slds-g-color-brand-base-50, var(--lwc-brandAccessible));
+}

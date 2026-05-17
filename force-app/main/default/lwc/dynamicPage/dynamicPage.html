@@ -1,0 +1,11 @@
+<template>
+    <lightning-input label="Name" type = "text" onchange={changeHandler}></lightning-input>
+    {item.name}
+    <lightning-card title="Dynamic Card" icon-name="standard:account">
+        <h1 class="slds-var-p-horizontal_small">
+            This is a button.
+
+        </h1>
+        <lightning-button label="Click Me" onclick={handleClick}></lightning-button>
+        </lightning-card>
+</template>

@@ -1,0 +1,10 @@
+<apex:page  controller="MyPageController">
+<h3>{!account.Name}</h3>
+<apex:pageBlock title="Account Details">
+    <apex:pageBlockTable rendered="{!account.cases.size > 0}" value="{!account.Cases}" var="case">
+        <apex:column>
+        <apex:outputField value="{!case.IsEscalated}"/>
+        </apex:column>
+    </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

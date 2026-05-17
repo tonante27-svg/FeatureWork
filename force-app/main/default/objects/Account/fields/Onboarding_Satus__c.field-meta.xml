@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Onboarding_Satus__c</fullName>
+    <description>Onboarding Status</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Used on  VIP or Standard Discount Project -  to determine the boarding status</inlineHelpText>
+    <label>Onboarding Satus</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Prospect</fullName>
+                <default>false</default>
+                <label>Prospect</label>
+            </value>
+            <value>
+                <fullName>Processing</fullName>
+                <default>false</default>
+                <label>Processing</label>
+            </value>
+            <value>
+                <fullName>Onboarded</fullName>
+                <default>false</default>
+                <label>Onboarded</label>
+            </value>
+            <value>
+                <fullName>Inact</fullName>
+                <default>false</default>
+                <label>Inact</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

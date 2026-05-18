@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>CountryCalloutQueueable</members>
+        <members>CountryCalloutQueueableTest</members>
+        <members>CountryCalloutUtility</members>
+        <members>CountryCalloutUtilityTest</members>
+        <members>CountryTriggerHandler</members>
+         <members>CountryTriggerHandlerTest</members>
+        <members>CountryWrapper</members>
+        <members>CountryWrapperTest</members>
+       
+        <members>ChartController</members>
+        <members>ChartControllerTest</members>
+        <name>ApexClass</name>
+         
+    </types>
+    <types>
+            <members>CountryTrigger</members>
+            <name>ApexTrigger</name>
+         </types>
+    <types>
+        <members>ChartController</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>Country__c</members>
+        <name>CustomObject</name>
+    </types>
+    <version>59.0</version>
+</Package>

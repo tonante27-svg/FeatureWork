@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - main  # This triggers the deploy whenever you push to 'main'
-    paths:
-      - 'force-app/**' # Only trigger if files in the force-app folder change
-
+    
 jobs:
   deploy-code:
     runs-on: ubuntu-latest
@@ -33,4 +31,4 @@ jobs:
       - name: 'Deploy Metadata'
         run: |
           sf project deploy start --manifest manifest/gitPackage.xml --target-org MayDX --test-level RunLocalTests
-        # sf project deploy start --source-dir force-app --target-org sandbox --test-level NoTestRun
+        

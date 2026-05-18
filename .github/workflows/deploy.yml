@@ -24,11 +24,10 @@ jobs:
       - name: 'Authenticate to Sandbox'
         run: |
           echo "${{ secrets.SFDX_AUTH_URL }}" > ./authfile.txt
-          sf org login sfdx-url --sfdx-url-file ./authfile.txt --set-default --alias sandbox
+          sf org login sfdx-url --sfdx-url-file ./authfile.txt --set-default --alias MayDX
           rm ./authfile.txt
 
       # 4. Deploy the code
       - name: 'Deploy Metadata'
         run: |
-          sf project deploy start --manifest manifest/gitPackage.xml --target-org MayDX --test-level RunLocalTests
-        
+          sf project deploy start --manifest manifest/gitPackage.xml --target-org MayDX --test-level RunLocalTests      

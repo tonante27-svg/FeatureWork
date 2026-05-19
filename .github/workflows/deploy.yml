@@ -30,4 +30,4 @@ jobs:
       # 4. Deploy the code
       - name: 'Deploy Metadata'
         run: |
-          sf project deploy start --manifest manifest/gitPackage.xml --target-org MayDX --test-level RunLocalTests      
+          run: sf project deploy start --manifest manifest/gitPackage.xml --target-org MayDX --test-level RunLocalTests --ignore-conflicts     

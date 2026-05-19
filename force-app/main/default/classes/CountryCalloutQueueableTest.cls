@@ -65,7 +65,7 @@ public class CountryCalloutQueueableTest {
         Assert.isNotNull(cwrap, 'The utility should return a list, not null.');
         Assert.isFalse(cwrap.isEmpty(), 'The list should contain the mocked country.');
         // Assuming your wrapper has a 'name' property
-        Assert.areEqual('Germany', cwrap[0].name, 'The parsed name should match the mock.');
+        Assert.areEqual('Germany', cwrap[0].name.common, 'The parsed name should match the mock.');
     }
 
     @isTest

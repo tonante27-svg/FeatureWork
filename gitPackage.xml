@@ -23,10 +23,11 @@
         <members>ChartController</members>
         <name>ApexPage</name>
     </types>
-     <types>
+    <types>
         <members>Rest_Countries_Endpoint</members>
         <name>CustomLabel</name>
     </types>
+
     <types>
         <members>Country_Record_Page1</members>
         <name>FlexiPage</name>

@@ -4,12 +4,11 @@
         <members>CountryCalloutQueueable</members>
         <members>CountryCalloutQueueableTest</members>
         <members>CountryCalloutUtility</members>
-        <members>CountryCalloutUtilityTest</members>
         <members>CountryTriggerHandler</members>
          <members>CountryTriggerHandlerTest</members>
         <members>CountryWrapper</members>
         <members>CountryWrapperTest</members>
-       
+       <members>ThrowCalloutExceptionMock</members>
         <members>ChartController</members>
         <members>ChartControllerTest</members>
         <name>ApexClass</name>

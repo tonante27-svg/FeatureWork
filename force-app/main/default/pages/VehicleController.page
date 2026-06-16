@@ -1,0 +1,23 @@
+<apex:page standardController="Vehicle__c" recordSetVar="vehicles" extensions="VehicleDisplayExtension" sidebar="false"></apex:page>
+
+<apex:pageMessages />
+        
+    <apex:pageBlock title="Mass Account Updater">
+        <!-- Records Table -->
+        <apex:pageBlockTable value="{!vehicles}" var="vs">
+            <apex:column value="{!vs.Name}"/>
+            <apex:column value="{!vs.VIN__c}"/>
+            <apex:column value="{!vs.Model__c}"/>
+            <apex:column value="{!vs.Make__c}"/>
+            <apex:column value="{!vs.Year__c}"/>
+            <!-- Add more columns -->
+    </apex:pageBlockTable>
+        <!-- Standard Pagination -->
+        <apex:pageBlockButtons>
+            <apex:commandButton value="First" action="{!ssc.first}" rerender="table"/>
+            <apex:commandButton value="Previous" action="{!ssc.previous}" rerender="table"/>
+            <apex:commandButton value="Next" action="{!ssc.next}" rerender="table"/>
+            <apex:commandButton value="Last" action="{!ssc.last}" rerender="table"/>
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+</apex:page>

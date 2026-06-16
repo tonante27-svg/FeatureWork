@@ -13,7 +13,8 @@ public class CountryCalloutQueueable implements Queueable, Database.AllowsCallou
         List<Country__c> countriesToUpdate = new List<Country__c>();
         
         // 1. Fetch the freshest data
-        List<Country__c> scope = [SELECT Id, Name FROM Country__c WHERE Id IN :countryIds];
+        List<Country__c> scope = [SELECT Id, Name,Capital__c,  FROM Country__c WHERE Id IN :countryIds];
+        List<Country__c> scope = [SELECT Id, Name,Capital__c,  FROM Country__c WHERE Id IN :countryIds];
         
         for (Country__c c : scope) {
             // 2. Use your Utility class

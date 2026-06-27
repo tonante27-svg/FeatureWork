@@ -14,16 +14,16 @@ public with sharing class TaskAttachmentForSObjectsBatch implements Database.Bat
     private String taskStatus;
     private Integer taskCount = 0;
     // Constructor accepts the whole collection
-    public TaskAttachmentForSObjectsBatch(TaskBatchRequest requests){
-        if((request != null)){
-           // Map<String, Object> blueprint = (Map<String, Object>) JSON.deserializeUntyped(jsonConfig);
-            this.objectTypeName = requests.sObjectName;
+    public TaskAttachmentForSObjectsBatch(TaskAttachBatchRequest requests){
+        if(requests != null){
+            // Map<String, Object> blueprint = (Map<String, Object>) JSON.deserializeUntyped(jsonConfig);
+            this.objectTypeName = requests.objectTypeName;
             this.taskPriority = requests.taskPriority;
-            this.taskSubject = requests.taskubject;
+            this.taskSubject = requests.taskSubject;
             this.taskType = requests.taskType;
             this.taskStatus = requests.taskStatus;
-            if(request.taskDate!= null){
-                this.taskDate = request.taskDate;
+            if(requests.taskDate != null){
+                this.taskDate = requests.taskDate;
             }
         }  
     }

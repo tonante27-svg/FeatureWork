@@ -2,11 +2,10 @@
     <lightning-card title="MultiObject Task Creator" icon-name="utility:image">
        <div class="slds-var-p-around_medium">
             <lightning-combobox label="Object Type:" 
-                placeholder="Choose ab Object  Type"
+                placeholder="Choose an Object Name"
                 value={selectedObject} 
                 onchange={handleObjectChange}
                 options={objectOptions}>
-                <p>Select option: {value}</p>
             </lightning-combobox>
        </div>
        <!--- Find out how you did the Bus Selector and fit it in here (Lightning component refernce)-->
@@ -30,24 +29,20 @@
                 value={selectedStatus} 
                 onchange={handleStatus}
                 options={statusOptions}>
-                <p>Select option: {value}</p>
             </lightning-combobox>
             <lightning-combobox name="type" label="Type:" 
                 placeholder="Choose. Type"
                 value={selectedType} 
                 onchange={handleType}
                 options={typeOptions}>
-                <p>Select option: {value}</p>
             </lightning-combobox>
-            <lightning-combobox name="type" label="Priority:" 
+            <lightning-combobox name="priority" label="Priority:" 
                 placeholder="Choose. Priority"
                 value={selectedPriority} 
                 onchange={handlePriority}
                 options={priorityOptions}>
-                <p>Select option: {value}</p>
             </lightning-combobox>
         </div>
-    </lightning-card>
         <div class="slds-var-p-around_medium">
             <lightning-button label="Submit" onclick={handleSubmit}></lightning-button>
        </div>

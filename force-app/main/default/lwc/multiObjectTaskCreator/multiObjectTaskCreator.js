@@ -27,10 +27,14 @@ export default class MultiObjectTaskCreator extends LightningElement {
 
     @wire(getEntityDefinitions)
     wiredObjects({ data, error }) {
+        console.log('RAW DATA >>> data:', data);
+        console.log('Received objects:', data.length);
+        console.log('TYPE >>>', typeof data);
+        console.log('IS ARRAY >>>', Array.isArray(data));
         if (data) {
             this.objectOptions = data;
         } else if (error) {
-            console.error(error);
+             console.error(error);
         }
     }
 

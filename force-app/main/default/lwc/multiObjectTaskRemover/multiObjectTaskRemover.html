@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="MultiObject Task Remover" icon-name="utility:image">
+       <div class="slds-var-p-around_medium">
+            <lightning-combobox label="Object Type:" 
+                placeholder="Choose an Object Name"
+                value={selectedObject} 
+                onchange={handleObjectChange}
+                options={objectOptions}>
+            </lightning-combobox>
+       </div>
+       <!--- Now Handle the Task Removal-->
+        <div class="slds-var-p-around_medium">
+            <lightning-button label="Submit" onclick={handleSubmit}></lightning-button>
+       </div>
+     </lightning-card>
+</template>

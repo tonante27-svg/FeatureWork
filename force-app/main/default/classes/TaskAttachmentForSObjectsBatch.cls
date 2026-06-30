@@ -3,27 +3,59 @@
  */
 public with sharing class TaskAttachmentForSObjectsBatch implements Database.Batchable<SObject>, Database.Stateful {
     
-    // Maintain state of the wrappers passed from the Invocable context
-    
     // Configuration blueprint variables
-    private String objectTypeName;
-    private Date taskDate;
-    private String taskPriority;
-    private String taskSubject;
-    private String taskType;
-    private String taskStatus;
+    public String objectTypeName;
+    public Date taskDate;
+    public String taskPriority;
+    public String taskSubject;
+    public String taskType;
+    public String taskStatus;
+
     private Integer taskCount = 0;
-    // Constructor accepts the whole collection
-    public TaskAttachmentForSObjectsBatch(TaskAttachBatchRequest requests){
-        if(requests != null){
-            // Map<String, Object> blueprint = (Map<String, Object>) JSON.deserializeUntyped(jsonConfig);
-            this.objectTypeName = requests.objectTypeName;
-            this.taskPriority = requests.taskPriority;
-            this.taskSubject = requests.taskSubject;
-            this.taskType = requests.taskType;
-            this.taskStatus = requests.taskStatus;
-            if(requests.taskDate != null){
-                this.taskDate = requests.taskDate;
+
+    /**
+     * Constructor 1: Accepts individual primitive parameters (Called by LWC Service route)
+     */
+    public TaskAttachmentForSObjectsBatch(
+            String objectTypeName,
+            String taskPriority,
+            String taskSubject,
+            String taskType, 
+            String taskStatus,
+            Date taskDate) {
+        
+        this.objectTypeName = objectTypeName;
+        this.taskPriority = taskPriority;
+        this.taskSubject = taskSubject;
+        this.taskType = taskType;
+        this.taskStatus = taskStatus;
+        this.taskDate = taskDate;
+        
+        if (String.isNotBlank(this.objectTypeName)) {
+            System.debug('BATCH: << OBJECT TYPE NAME >> ' + this.objectTypeName);
+            if (!Schema.getGlobalDescribe().containsKey(this.objectTypeName)) {
+                throw new AuraHandledException('Invalid object type: ' + this.objectTypeName);
+            }
+        }  
+    }
+
+    /**
+     * Constructor 2: Accepts the LWC Wrapper object (Called by Flow Service route)
+     * 🌟 This is exactly what you wrote, and it is completely correct!
+     */
+    public TaskAttachmentForSObjectsBatch(TaskAttachBatchService.LwcTaskRequest request) {
+         
+        if (request != null) {
+            this.objectTypeName = request.objectTypeName;
+            this.taskSubject = request.taskSubject;
+            this.taskDate = request.taskDate;
+            this.taskPriority = request.taskPriority;
+            this.taskType = request.taskType;
+            this.taskStatus = request.taskStatus;
+            
+            System.debug('BATCH (Wrapper): << OBJECT TYPE NAME >> ' + this.objectTypeName);
+            if (String.isNotBlank(this.objectTypeName) && !Schema.getGlobalDescribe().containsKey(this.objectTypeName)) {
+                throw new AuraHandledException('Invalid object type: ' + this.objectTypeName);
             }
         }  
     }
@@ -36,83 +68,72 @@ public with sharing class TaskAttachmentForSObjectsBatch implements Database.Bat
         if (String.isBlank(objectTypeName)) {
             return new List<SObject>();
         }
-        if(objectTypeName.toLowerCase() == 'contact' || 
-            objectTypeName.toLowerCase() == 'opportunity' || objectTypeName.toLowerCase() =='case'){
+        String lowerObjName = objectTypeName.toLowerCase();
+        if (lowerObjName == 'contact' || lowerObjName == 'opportunity' || lowerObjName == 'case') {
             query = 'SELECT Id, AccountId FROM ' + objectTypeName;
-        }else{
+        } else {
              query = 'SELECT Id FROM ' + objectTypeName;
         }
         return Database.query(query);
     }
 
     /**
-     * Execute processes the wrappers in chunks (scoped by the size specified in executeBatch).
-     * Creates tasks attached to the processed sObjects.
+     * Execute processes the records in chunks and creates tasks attached to them.
      */
     public void execute(Database.BatchableContext bc, List<SObject> scope) {
         List<Task> tasksToCreate = new List<Task>();
        
         Schema.DescribeSObjectResult describeResult = Schema.getGlobalDescribe().get(objectTypeName).getDescribe();
         Map<String, Schema.SObjectField> fieldsMap = describeResult.fields.getMap();
-        String objType = objectTypeName != null
-        ? objectTypeName.toLowerCase()
-        : null;
+        String objType = objectTypeName != null ? objectTypeName.toLowerCase() : null;
         
-        for(SObject sObj : scope ){
+        for (SObject sObj : scope) {
             Task t = new Task();
-            // For each SObject in scope, match against wrappers and create tasks
-            // You may need to match sObj.Id to a wrapper, depending on use-case
-            // WHO side
+        //Use WHO Side (People objects)
             if (objType == 'lead' || objType == 'contact') {
                 t.WhoId = sObj.Id;
-            }
-            if(fieldsMap.containsKey('AccountId') && objType != 'contact'){
-                t.WhatId = (Id) sObj.get('AccountId');
+            }else{
+                t.WhatId = sObj.Id;
             }
             t.Subject = taskSubject;
             t.Priority = taskPriority;
             t.ActivityDate = taskDate;
             t.Status = taskStatus;
             t.Type = taskType;
-            t.Description += '\nProcessed Object Type: ' + objectTypeName;
+            // 🌟 Fixed: Avoid safe-assignment syntax issue with a clean string assignment
+            t.Description = 'Processed Object Type: ' + objectTypeName;
+            
             tasksToCreate.add(t);
-        }//For
+        }
         
         if (!tasksToCreate.isEmpty()) {
             insert tasksToCreate;
-            taskCount = tasksToCreate.size();
+            taskCount += tasksToCreate.size(); // 🌟 Fixed: accumulate total size instead of overwriting it
         }
     }
+
     /**
-     * Execute email and notification concerning the total trasks created and appeded to the sObject
-     * 
+     * Finish method sends out notifications and summary emails.
      */
     public void finish(Database.BatchableContext bc) {
-        // Optional: Send an email confirmation or log results
-        String txtEmailBody = 'The tottal number of task records appended to object '+objectTypeName+' is: '+taskCount;
+        String txtEmailBody = 'The total number of task records appended to object ' + objectTypeName + ' is: ' + taskCount;
         Messaging.SingleEmailMessage msg = new Messaging.SingleEmailMessage();
-        msg.subject = '\nProcessed Object Type: ' + objectTypeName;
-        msg.toAddresses = new List<String>{'emiliosilva181@gmail.com'};
-        msg.plainTextBody = txtEmailBody;
-        Messaging.SingleEmailMessage[] messages = 
-        new List<Messaging.SingleEmailMessage> {msg};
+        msg.setSubject('Processed Object Type: ' + objectTypeName); // 🌟 Fixed: added proper setter method syntax
+        msg.setToAddresses(new List<String>{'emiliosilva181@gmail.com'});
+        msg.setPlainTextBody(txtEmailBody); // 🌟 Fixed: added proper setter method syntax
+        
+        Messaging.SingleEmailMessage[] messages = new List<Messaging.SingleEmailMessage> {msg};
         Messaging.SendEmailResult[] results = Messaging.sendEmail(messages);
 
-        if (results[0].success){
+        if (results[0].isSuccess()){ // 🌟 Fixed: use isSuccess() method call
              System.debug('The email was sent successfully.');
-        }else{
-                System.debug('The email could not be sent.'+ results[0].errors[0].message);
+        } else {
+             System.debug('The email could not be sent.' + results[0].getErrors()[0].getMessage()); // 🌟 Fixed: use proper array getters
         }
-         Id jobId = bc.getJobId();
-
+        
+        Id jobId = bc.getJobId();
         AsyncApexJob job = [
-            SELECT Id,
-                   Status,
-                   NumberOfErrors,
-                   JobItemsProcessed,
-                   TotalJobItems,
-                   CreatedDate,
-                   CompletedDate
+            SELECT Id, Status, NumberOfErrors, JobItemsProcessed, TotalJobItems, CreatedDate, CompletedDate
             FROM AsyncApexJob
             WHERE Id = :jobId
             LIMIT 1
@@ -121,21 +142,17 @@ public with sharing class TaskAttachmentForSObjectsBatch implements Database.Bat
         System.debug('Batch Status: ' + job.Status);
         System.debug('Processed: ' + job.JobItemsProcessed + '/' + job.TotalJobItems);
       
-        //Send notification too
-       // Get the Notification Type Id (Setup -> Custom Notifications)
         CustomNotificationType type = [SELECT Id FROM CustomNotificationType WHERE DeveloperName = 'Batch_Status_Notification' LIMIT 1];
         Messaging.CustomNotification notification = new Messaging.CustomNotification();
         notification.setBody('The background task creation for ' + this.objectTypeName + ' has finished running.');
-        notification.setTitle(taskCount+' Tasks Attached Successfully!');
+        notification.setTitle(taskCount + ' Tasks Attached Successfully!');
         notification.setNotificationTypeId(type.Id);
-        notification.setTargetId(UserInfo.getUserId()); // Or send to a specific record page
+        notification.setTargetId(UserInfo.getUserId());
         
         try {
-            // Send to the user who kicked off the batch
             notification.send(new Set<String> { UserInfo.getUserId() });
         } catch (Exception e) {
             System.debug('Error sending notification: ' + e.getMessage());
         }
-
-    }//FINISH
+    }
 }

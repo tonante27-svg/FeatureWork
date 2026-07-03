@@ -2,8 +2,8 @@
     <apex:form>
         <apex:outputPanel id="counter">
             <apex:outputText value="Click Me : {!count}" />
-            <apex:Support event="onclick" action="{!incrementCounter}" rerender="counter" status="counterStatus" />    
         </apex:outputPanel>
+        <apex:commandButton value="Increment" action="{!incrementCounter}" rerender="counter" status="counterStatus" />
             <apex:actionStatus id="counterStatus">
             <apex:facet name="start">
                 <p>Loading...</p>

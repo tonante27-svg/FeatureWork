@@ -1,0 +1,28 @@
+<apex:page standardController="Case"  sidebar="false" lightningStylesheets="false" Extensions="CaseManagerExtension">
+	<apex:pageMessages />
+    <apex:form>
+        <apex:PageBlock title="Case Manager" mode="edit">
+            <apex:PageBlockButtons location ="bottom">
+                <apex:commandButton action="{!save}" value="Save"/>
+                <apex:commandButton action="{!cancel}" value="Cancel"/>
+                <apex:commandButton action="{!sendEmailNotification}" value="Send Email Notification"/>
+                <apex:commandButton action="{!refreshPage}" value="Refresh Page"/>
+
+            </apex:PageBlockButtons>
+             <apex:PageBlockSection  title="View Case Details" columns="1">
+                <apex:outputField value="{!case.CaseNumber}"/>
+             </apex:PageBlockSection>
+            <apex:PageBlockSection  title="View Cases" columns="1">
+                <apex:inputField value="{!case.Comments}"/>
+                <apex:inputField value="{!case.IsEscalated}"/>
+                 <apex:inputField value="{!case.Priority}"/>
+                <apex:inputField value="{!case.Status}"/>
+                <apex:inputField value="{!case.Type}"/>
+            </apex:PageBlockSection>
+             
+        </apex:PageBlock>
+    </apex:form>
+   
+    <apex:relatedList list="Histories" /> 
+        
+</apex:page>

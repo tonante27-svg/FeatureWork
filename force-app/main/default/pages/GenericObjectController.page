@@ -1,0 +1,46 @@
+<apex:page controller="GenericObjectController" lightningStylesheets="true">
+  <apex:pageMessages id="msgBox" />
+    <apex:form id="theGOForm">
+        
+        <!-- PANEL 1: Generic Objects -->
+        <apex:pageBlock title="Generic Object View and Task Creator">
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Launch Batch Task Engine" action="{!createTask}"/>
+            </apex:pageBlockButtons>
+            <!-- 1. Dropdown selector -->
+            <apex:pageBlockSection title="Target Object Setup" columns="1">
+                <apex:selectList value="{!selectedObject}" size="1" multiselect="false">
+                    <apex:selectOptions value="{!objectNameOptions}"/>
+                </apex:selectList>
+            </apex:pageBlockSection>
+
+        <!-- PANEL 2: Task Priority -->
+            <apex:pageBlockSection  title="Task Priorities" columns="1">
+                <apex:selectList value="{!selectedPriority}" size="1">
+                    <apex:selectOptions value="{!PriorityValues}"/>
+                    <!-- AJAX trigger: Rerenders our panel wrapper when selection changes -->
+                    <apex:actionSupport event="onchange" reRender="panelWrapper" />
+                </apex:selectList>
+            </apex:pageBlockSection>
+
+        <!-- PANEL 3: Task Subject -->
+            <apex:pageBlockSection  title="Task Subject" columns="1">
+                <apex:inputText value="{!taskSubject}" label="Task Subject" id="theSubjectInput"></apex:inputText>
+            </apex:pageBlockSection>
+
+          <!-- PANEL 4: Task Type -->
+            <apex:pageBlockSection  title="Task Type" columns="1">
+                <apex:selectList value="{!selectedType}" size="1" multiselect="false">
+                    <apex:selectOptions value="{!TypeValues}"/>
+                </apex:selectList>
+            </apex:pageBlockSection>
+         <!-- PANEL 5: Task Status -->
+            <apex:pageBlockSection title="Task Status" columns="1">
+                <apex:selectList value="{!selectedStatus}" size="1" multiselect="false">
+                    <apex:selectOptions value="{!StatusValues}"/>
+                </apex:selectList>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+    </apex:form>
+</apex:page>

@@ -1,0 +1,32 @@
+<apex:page StandardController='Opportunity' recordSetVar="opportunites" extension="MassEditOppExtension" lightningStylesheets="true" sidebar="false">
+    <apex:sectionHeader title="Oportunity Management" subtitle="Mass Stage and Date Editor" />
+    
+    <!-- Toast-like container to render our error or success logs at the top -->
+    <apex:pageMessages id="errorMessages" />
+    <apex:form id="editForm">
+        <apex:pageBlock title="Edit Selected Opportunities" mode="edit">
+            <apex:pageBlockButtons location="both">
+                <apex:commandButton value="Update" action="{!saveChanges}" />
+                <apex:commandButton value="Update" action="{!cancel}" />
+                <apex:actionStatus id="saveStatus" startText="Processing updates ..."/>
+            </apex:pageBlockButtons>
+    
+            <apex:pageBlockTable value="{!oppsToEdit}" var="opp" id="oppTable">
+        
+                <apex:column headerValue="Opportunity Name">
+                    <!-- Standard text display since we probably don't want them renaming bulk records here -->
+                    <apex:outputField value="{!opp.Name}" />
+                </apex:colum>
+                <apex:column headerValue="Stage Name">
+                    <apex:outputField value="{!opp.Name}" />
+                </apex:colum>
+                <apex:column headerValue="Close Date">
+                    <apex:outputField value="{!opp.CloseDate}" />
+                </apex:colum>
+                <apex:column headerValue="Amount">
+                    <apex:outputField value="{!opp.Amount}" />
+                </apex:colum>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

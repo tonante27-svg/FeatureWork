@@ -1,50 +1,75 @@
 <template>
     <lightning-card title="MultiObject Task Creator" icon-name="utility:image">
-       <div class="slds-var-p-around_medium">
-            <lightning-combobox label="Object Type:" 
-                placeholder="Choose an Object Name"
-                value={selectedObject} 
-                onchange={handleObjectChange}
-                options={objectOptions}>
-            </lightning-combobox>
-       </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-2">
+                <div  class="slds-box slds-box_x-small slds-text-align_center slds-var-m-around_x-small">
+                        <lightning-combobox label="Object Type:" 
+                            placeholder="Choose an Object Name"
+                            value={selectedObject} 
+                            onchange={handleObjectChange}
+                            options={objectOptions}>
+                        </lightning-combobox>
+                    </div>
+            </div>
        <!--- Find out how you did the Bus Selector and fit it in here (Lightning component refernce)-->
-        <div class="slds-var-p-around_medium">
-            <lightning-input type="text" label="Subject:" 
-                value={taskSubject} required 
-                lwc:ref="subject"
-                message-when-value-missing="Subject Is required"
-                onchange={handleSubject}>
-            </lightning-input>
-                <lightning-input type="date" label="Due Date:" 
-                value={taskDate} required="true"
-                lwc:ref="dueDate"
-                message-when-value-missing="Due Date Is required"
-                onchange={handleDate}>
-            </lightning-input>
+            <div class="slds-col slds-size_1-of-2">
+                <div  class="slds-box slds-box_x-small slds-text-align_center slds-var-m-around_x-small">
+                    <lightning-input type="text" label="Subject:" 
+                        value={taskSubject} required 
+                        lwc:ref="subject"
+                        message-when-value-missing="Subject Is required"
+                        onchange={handleSubject}>
+                    </lightning-input>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <div  class="slds-box slds-box_x-small slds-text-align_center slds-var-m-around_x-small">
+                    <lightning-input type="date" label="Due Date:" 
+                    value={taskDate} required="true"
+                    lwc:ref="dueDate"
+                    message-when-value-missing="Due Date Is required"
+                    onchange={handleDate}>
+                    </lightning-input>
+                </div>  
+            </div>
+
+           <div class="slds-col slds-size_1-of-2">
+                <div  class="slds-box slds-box_x-small slds-text-align_center slds-var-m-around_x-small">
+                    <lightning-combobox name="status" label="Status:" 
+                        placeholder="Choose. Status"
+                        value={selectedStatus} 
+                        onchange={handleStatus}
+                        options={statusOptions}>
+                    </lightning-combobox>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <div  class="slds-box slds-box_x-small slds-text-align_center slds-var-m-around_x-small">
+                    <lightning-combobox name="type" label="Type:" 
+                        placeholder="Choose. Type"
+                        value={selectedType} 
+                        onchange={handleType}
+                        options={typeOptions}>
+                    </lightning-combobox>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <div  class="slds-box slds-box_x-small slds-text-align_center slds-var-m-around_x-small">
+
+                    <lightning-combobox name="priority" label="Priority:" 
+                        placeholder="Choose. Priority"
+                        value={selectedPriority} 
+                        onchange={handlePriority}
+                        options={priorityOptions}>
+                    </lightning-combobox>
+                </div>
+            </div>
+        
+            <div class="slds-size_2-of-2">
+                <div  class="slds-box slds-box_x-small slds-text-align_center slds-var-m-around_x-small">
+                    <lightning-button label="Submit" onclick={handleSubmit}></lightning-button>
+                </div>
+            </div>
         </div>
-        <div class="slds-var-p-around_medium">
-            <lightning-combobox name="status" label="Status:" 
-                placeholder="Choose. Status"
-                value={selectedStatus} 
-                onchange={handleStatus}
-                options={statusOptions}>
-            </lightning-combobox>
-            <lightning-combobox name="type" label="Type:" 
-                placeholder="Choose. Type"
-                value={selectedType} 
-                onchange={handleType}
-                options={typeOptions}>
-            </lightning-combobox>
-            <lightning-combobox name="priority" label="Priority:" 
-                placeholder="Choose. Priority"
-                value={selectedPriority} 
-                onchange={handlePriority}
-                options={priorityOptions}>
-            </lightning-combobox>
-        </div>
-        <div class="slds-var-p-around_medium">
-            <lightning-button label="Submit" onclick={handleSubmit}></lightning-button>
-       </div>
      </lightning-card>
 </template>

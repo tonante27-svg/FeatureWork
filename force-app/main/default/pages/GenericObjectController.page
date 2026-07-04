@@ -25,9 +25,12 @@
 
         <!-- PANEL 3: Task Subject -->
             <apex:pageBlockSection  title="Task Subject" columns="1">
-                <apex:inputText value="{!taskSubject}" label="Task Subject" id="theSubjectInput"></apex:inputText>
-            </apex:pageBlockSection>
-
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Launch Batch Task Engine" action="{!createTask}"/>      
+            <apex:selectList value="{!selectedSubject}" size="1">
+                    <apex:selectOptions value="{!SubjectValues}"/>
+                </apex:selectList>           
+             </apex:pageBlockSection>
           <!-- PANEL 4: Task Type -->
             <apex:pageBlockSection  title="Task Type" columns="1">
                 <apex:selectList value="{!selectedType}" size="1" multiselect="false">

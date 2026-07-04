@@ -81,16 +81,32 @@ public with sharing class GenericObjectController{
         return options;
     }
 
-   /**
+    /**
      * Returns the picklist values for the Task.Status field as a list of
      * SelectOption objects suitable for use in LWC/Aura picklists.
      *
      * @return List<SelectOption> active status picklist entries (label/value)
      */
-    
     public List<SelectOption> getStatusValues(){
         List<SelectOption> options = new List<SelectOption>();
         for(Schema.PicklistEntry entry : Task.Status.getDescribe().getPicklistValues()) {
+            if(entry.isActive()) {
+                options.add(new SelectOption(entry.getLabel(), entry.getValue()));
+            }
+        }
+        return options;
+    }
+
+   /**
+     * Returns the picklist values for the Task.Subject field as a list of
+     * SelectOption objects suitable for use in LWC/Aura picklists.
+     *
+     * @return List<SelectOption> active subject picklist entries (label/value)
+     */
+    
+    public List<SelectOption> getSubjectValues(){
+        List<SelectOption> options = new List<SelectOption>();
+        for(Schema.PicklistEntry entry : Task.Subject.getDescribe().getPicklistValues()) {
             if(entry.isActive()) {
                 options.add(new SelectOption(entry.getLabel(), entry.getValue()));
             }
@@ -258,11 +274,11 @@ public with sharing class GenericObjectController{
             // 2. Execute the Batch class, passing parameters cleanly out of your request wrapper
             TaskAttachmentForSObjectsBatch batchJob = new TaskAttachmentForSObjectsBatch(
                 this.request.objectTypeName, 
-                this.request.taskDate, 
                 this.request.taskPriority, 
                 this.request.taskSubject, 
                 this.request.taskType, 
-                this.request.taskStatus
+                this.request.taskStatus,
+                 this.request.taskDate
             );
             
             Database.executeBatch(batchJob, 200);

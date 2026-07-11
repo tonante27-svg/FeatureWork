@@ -73,6 +73,9 @@ public with sharing class DispatchSchedController {
         * not return a value.
      */
     public void loadRoutes(){
+         if (this.rwList == null) {
+            this.rwList = new List<RouteWrapper>();
+        }
         if (Schema.sObjectType.Bus_Route__c.isAccessible()) {
             List<Bus_Route__c> routeList = [SELECT Id, Name FROM Bus_Route__c WITH USER_MODE];
             for(Bus_Route__c r : routeList){
@@ -105,7 +108,7 @@ public with sharing class DispatchSchedController {
 
    
     /**
-     * processSelected
+     * saveRouteSchedule
      *
      * Processes the selected ContactWrapper and RouteWrapper instances and
      * performs the intended action (placeholder). Currently returns null as

@@ -1,0 +1,45 @@
+<apex:page standardController="Contact" recordSetVar="contacts" extensions="DispatchSchedController" docType="html-5.0" lightningStylesheets="true" sidebar="false">
+    
+    <apex:form>
+        <apex:pageBlock title="Bus Route Dispatch Controller"> 
+            <apex:pageMessages/>
+            <div style="display: flex; gap: 20px; width: 100%;">
+                
+                <div style="flex: 1; min-width: 0;">
+                    <apex:pageBlockSection title="Passenger List" columns="1">
+                        <apex:pageBlockTable value="{!cwList}" var="cw" width="100%">
+                            <apex:column headerValue="Select">
+                                <apex:inputCheckbox value="{!cw.selected}"/>
+                            </apex:column>
+                            <apex:column value="{!cw.cont.Name}"/>
+                            <apex:column value="{!cw.cont.Email}"/>
+                        </apex:pageBlockTable>
+                    </apex:pageBlockSection>
+                </div>
+                
+                <div style="flex: 1; min-width: 0;">
+                    <apex:pageBlockSection title="Route List" columns="1">
+                        <apex:pageBlockTable value="{!rwList}" var="rw" width="100%">
+                            <apex:column headerValue="Select">
+                                <apex:inputCheckbox value="{!rw.selected}"/>
+                            </apex:column>
+                            <apex:column value="{!rw.route.Name}"/>
+                        </apex:pageBlockTable>
+                        
+                        <apex:input type="date" label="Departure Date" value="{!departDate}"/>
+                        <apex:selectList value="{!departTime}" multiselect="false" size="1" label="Departure Time">
+                            <apex:selectOptions value="{!items}"/>
+                        </apex:selectList>
+            
+                    </apex:pageBlockSection>
+                </div>
+                
+            </div>
+            
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton action="{!saveRouteSchedule}" value="Save Route Schedule"/>
+            </apex:pageBlockButtons>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

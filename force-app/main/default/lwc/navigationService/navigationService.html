@@ -1,6 +1,14 @@
 <template>
-    <h1>Navigation</h1>
-    <lightning-button variant="brand" label="Go to Google" onclick={goToGoogle}></lightning-button>
-{thisPageReference}
-{recordPageUrl}
+   <h1>Navigation</h1>
+    
+    <lightning-button 
+        variant="brand" 
+        label="Go to New Contact" 
+        onclick={NavigateToContact}>
+    </lightning-button>
+
+    <div class="slds-var-p-top_medium">
+        <h3>Current Page Reference:</h3>
+        <pre>{thisPageReference}</pre>
+    </div>
 </template>

@@ -41,7 +41,7 @@ export default class LifecycleMethods extends LightningElement {
     causeError(){
         this.error = true;
         // This will cause an error in the template since we're trying to access a property on an undefined object
-        this.erro = true;
-        onsole.log(this.error);
+        this.error = true;
+        console.log(this.error);
     }
 }
